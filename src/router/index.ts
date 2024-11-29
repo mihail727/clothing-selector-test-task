@@ -1,6 +1,6 @@
 import type { Component } from 'vue';
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
-import { launchMiddlewareSystem } from './middleware-system';
+import { layoutsMiddleware } from './middlewares';
 
 declare module 'vue-router' {
 	interface RouteMeta {
@@ -34,8 +34,7 @@ const router = createRouter({
 			behavior: 'smooth',
 		};
 	},
+	globalMiddleware: [layoutsMiddleware],
 });
-
-router.beforeResolve(launchMiddlewareSystem);
 
 export default router;
