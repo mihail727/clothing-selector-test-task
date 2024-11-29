@@ -47,6 +47,8 @@ defineProps<{
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
 	gap: 10px;
 	align-content: flex-start;
 	overflow: auto;

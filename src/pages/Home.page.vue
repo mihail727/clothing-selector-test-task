@@ -76,16 +76,16 @@ const selectedCountLabel = computed(
 	height: 196px;
 }
 
+// Можно так или можно было бы создать
+// модификации ClothingSelected с зашитыми значениями для SelectedUser и SelectedChoise
+// зависело бы от всего макета сайта
 .clothingUserSelectedItem {
 	width: 141px;
 }
 
-// Можно так или можно было бы создать
-// модификации ClothingSelected с зашитыми значениями для SelectedUser и SelectedChoise
-// зависело бы от всего макета сайта
 .clothingChoiseSelectedItem {
-	width: calc(315px - 20px - 2px); // calc(width - padding - border)
-	height: calc(196px - 20px - 2px); // calc(height - padding - border)
+	width: 100%;
+	height: 100%;
 }
 
 .selectorsWrapper {
