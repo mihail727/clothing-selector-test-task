@@ -20,7 +20,14 @@ const selectedClothesChoiseList = ref<Clothes[]>([]);
 				:clothes-list="selectedClothesUserList"
 				:class="$style.clothingSelected"
 				:class-item="$style.clothingUserSelectedItem"
-			/>
+			>
+				<template #footer>
+					{{
+						`Выбрано: ${selectedClothesUserList.length} / ${MAX_SELECTED_CLOTHES_USER}`
+					}}
+				</template>
+			</ClothingSelected>
+
 			<ClothingSelected
 				:clothes-list="selectedClothesChoiseList"
 				:class="$style.clothingSelected"
@@ -64,7 +71,7 @@ const selectedClothesChoiseList = ref<Clothes[]>([]);
 
 .clothingSelected {
 	width: 315px;
-	height: 173px;
+	height: 196px;
 }
 
 .clothingUserSelectedItem {
@@ -76,7 +83,7 @@ const selectedClothesChoiseList = ref<Clothes[]>([]);
 // зависело бы от всего макета сайта
 .clothingChoiseSelectedItem {
 	width: calc(315px - 20px - 2px); // calc(width - padding - border)
-	height: calc(173px - 20px - 2px); // calc(height - padding - border)
+	height: calc(196px - 20px - 2px); // calc(height - padding - border)
 }
 
 .selectorsWrapper {
