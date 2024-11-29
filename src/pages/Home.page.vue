@@ -2,7 +2,7 @@
 import ClothingSelected from '@/components/ClothingSelected.vue';
 import ClothingSelector from '@/components/ClothingSelector.vue';
 import { useClothesStore } from '@/stores';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const MAX_SELECTED_CLOTHES_USER = 6;
 const MAX_SELECTED_CLOTHES_CHOISE = 1;
@@ -11,6 +11,10 @@ const clothesStore = useClothesStore();
 
 const selectedClothesUserList = ref<Clothes[]>([]);
 const selectedClothesChoiseList = ref<Clothes[]>([]);
+
+const selectedCountLabel = computed(
+	() => `Выбрано: ${selectedClothesUserList.value.length} / ${MAX_SELECTED_CLOTHES_USER}`,
+);
 </script>
 
 <template>
@@ -22,9 +26,7 @@ const selectedClothesChoiseList = ref<Clothes[]>([]);
 				:class-item="$style.clothingUserSelectedItem"
 			>
 				<template #footer>
-					{{
-						`Выбрано: ${selectedClothesUserList.length} / ${MAX_SELECTED_CLOTHES_USER}`
-					}}
+					{{ selectedCountLabel }}
 				</template>
 			</ClothingSelected>
 
