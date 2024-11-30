@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import ClothingSelectorItem from './ClothingSelectorItem.vue';
+import ClothingSelectorItem from '@/components/ClothingSelector/ClothingSelectorItem.vue';
 
 const selectedClothesList = defineModel<Clothes[]>('selectedClothesList', {
 	default: [],

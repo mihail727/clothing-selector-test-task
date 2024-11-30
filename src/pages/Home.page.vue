@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import ClothingSelected from '@/components/ClothingSelected.vue';
-import ClothingSelector from '@/components/ClothingSelector.vue';
+import ClothingSelected from '@/components/ClothingSelected/ClothingSelected.vue';
+import ClothingSelectedMany from '@/components/ClothingSelected/ClothingSelectedMany.vue';
+import ClothingSelectedOne from '@/components/ClothingSelected/ClothingSelectedOne.vue';
+import ClothingSelector from '@/components/ClothingSelector/ClothingSelector.vue';
+import TransitionSelectedItem from '@/components/Transitions/TransitionSelectedItem.vue';
 import { useClothesStore } from '@/stores';
 import { computed, ref } from 'vue';
 
@@ -20,21 +23,25 @@ const selectedCountLabel = computed(
 <template>
 	<main :class="$style.homePage">
 		<section :class="$style.selectedWrapper">
-			<ClothingSelected
-				:clothes-list="selectedClothesUserList"
-				:class="$style.clothingSelected"
-				:class-item="$style.clothingUserSelectedItem"
-			>
+			<ClothingSelected>
+				<template #main>
+					<ClothingSelectedMany :clothes-list="selectedClothesUserList" />
+				</template>
 				<template #footer>
 					{{ selectedCountLabel }}
 				</template>
 			</ClothingSelected>
 
-			<ClothingSelected
-				:clothes-list="selectedClothesChoiseList"
-				:class="$style.clothingSelected"
-				:class-item="$style.clothingChoiseSelectedItem"
-			/>
+			<ClothingSelected>
+				<template #main>
+					<TransitionSelectedItem>
+						<ClothingSelectedOne
+							v-if="selectedClothesChoiseList[0]"
+							:clothes="selectedClothesChoiseList[0]"
+						/>
+					</TransitionSelectedItem>
+				</template>
+			</ClothingSelected>
 		</section>
 
 		<section :class="$style.selectorsWrapper">
@@ -69,23 +76,6 @@ const selectedCountLabel = computed(
 .selectedWrapper {
 	display: flex;
 	justify-content: space-between;
-}
-
-.clothingSelected {
-	width: 315px;
-	height: 196px;
-}
-
-// Можно так или можно было бы создать
-// модификации ClothingSelected с зашитыми значениями для SelectedUser и SelectedChoise
-// зависело бы от всего макета сайта
-.clothingUserSelectedItem {
-	width: 141px;
-}
-
-.clothingChoiseSelectedItem {
-	width: 100%;
-	height: 100%;
 }
 
 .selectorsWrapper {
