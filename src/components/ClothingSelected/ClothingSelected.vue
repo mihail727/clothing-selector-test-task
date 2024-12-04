@@ -1,13 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-	<section :class="$style.clothingSelected">
+	<article :class="$style.clothingSelected">
 		<slot name="main" />
 
 		<footer v-if="'footer' in $slots" :class="$style.footer">
 			<slot name="footer" />
 		</footer>
-	</section>
+	</article>
 </template>
 
 <style lang="scss" module>

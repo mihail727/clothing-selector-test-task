@@ -36,16 +36,16 @@ function onClickItem(clickedClothes: Clothes) {
 </script>
 
 <template>
-	<section :class="$style.clothingSelector">
-		<ClothingSelectorItem
-			v-for="(clothes, index) in clothesList"
-			:key="index"
-			:clothes="clothes"
-			:theme="theme"
-			:is-selected="selectedClothesIds.includes(clothes.id)"
-			@click="onClickItem(clothes)"
-		/>
-	</section>
+	<ul :class="$style.clothingSelector">
+		<li v-for="(clothes, index) in clothesList" :key="index">
+			<ClothingSelectorItem
+				:clothes="clothes"
+				:theme="theme"
+				:is-selected="selectedClothesIds.includes(clothes.id)"
+				@click="onClickItem(clothes)"
+			/>
+		</li>
+	</ul>
 </template>
 
 <style lang="scss" module>

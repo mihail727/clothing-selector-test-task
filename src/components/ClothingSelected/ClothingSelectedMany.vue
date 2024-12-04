@@ -8,16 +8,13 @@ defineProps<{
 </script>
 
 <template>
-	<section :class="$style.clothingSelectedMany">
+	<ul :class="$style.clothingSelectedMany">
 		<TransitionSelectedItems>
-			<ClothingSelectedItem
-				v-for="clothes in clothesList"
-				:key="clothes.id"
-				:clothes="clothes"
-				:class="$style.item"
-			/>
+			<li v-for="clothes in clothesList" :key="clothes.id" :class="$style.item">
+				<ClothingSelectedItem :clothes="clothes" />
+			</li>
 		</TransitionSelectedItems>
-	</section>
+	</ul>
 </template>
 
 <style lang="scss" module>
